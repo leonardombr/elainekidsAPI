@@ -38,10 +38,14 @@ public class CriancaService extends AppService {
 	public boolean atualizar(Crianca crianca) throws AppException {
 
 		try {
-			tx = getEm().getTransaction();
-			getEm().persist(getEm().merge(crianca));
-			tx.commit();
-			return true;
+			if (validaNome(crianca) == true) {
+				tx = getEm().getTransaction();
+				getEm().persist(getEm().merge(crianca));
+				tx.commit();
+				return true;
+			} else {
+				return false;
+			}
 		} catch (Exception e) {
 			throw new AppException("Erro ao editar criança!");
 		}
@@ -87,7 +91,9 @@ public class CriancaService extends AppService {
 		try {
 			TypedQuery<Crianca> q = getEm().createQuery("select c from Crianca c where c.nome = :name", Crianca.class);
 			q.setParameter("name", crianca.getNome());
-			Crianca criancaValidate = q.getSingleResult();
+			Crianca criancaValidate = new Crianca();
+			criancaValidate = q.getSingleResult();
+			
 			if(criancaValidate.getNome().equals(crianca.getNome())){
 				if(criancaValidate.getId() == crianca.getId()){
 					return false;
