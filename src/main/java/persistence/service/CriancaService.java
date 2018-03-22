@@ -3,6 +3,7 @@ package persistence.service;
 import java.util.List;
 
 import javax.persistence.EntityTransaction;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
@@ -89,21 +90,24 @@ public class CriancaService extends AppService {
 	
 	public boolean validaNome(Crianca crianca) {		
 		try {
-			TypedQuery<Crianca> q = getEm().createQuery("select c from Crianca c where c.nome = :name", Crianca.class);
-			q.setParameter("name", crianca.getNome());
-			Crianca criancaValidate = new Crianca();
-			criancaValidate = q.getSingleResult();
+			Query q = getEm().createQuery("select c from Crianca c where c.nome = :nome", Crianca.class);
+			q.setParameter("nome", crianca.getNome());
+			Crianca criancaValidate = (Crianca) q.getSingleResult();
 			
 			if(criancaValidate.getNome().equals(crianca.getNome())){
+				
 				if(criancaValidate.getId() == crianca.getId()){
-					return false;
+					return true;
 				}
-				return true;
+				
+				return false;
 			}else{
 				return true;
 			}
-		} catch (AppException e) {
+		}catch (AppException e){
 			throw e;
+		}catch (NoResultException e) {
+			return true;
 		} catch(Exception e) {
 			throw new AppError("Erro ao validar nome de cadastro!");
 		}
