@@ -28,7 +28,7 @@ public class CriancaResource extends AppResource {
 	@Fill
 	private CriancaService service;
 	
-	//Teste commit
+	
 	@POST
 	@Path("/salvar")
 	@Consumes(MediaType.APPLICATION_JSON)
