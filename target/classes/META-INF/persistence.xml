@@ -13,7 +13,7 @@
 			<property name="hibernate.connection.provider_class" value="org.hibernate.connection.C3P0ConnectionProvider" />
 
 			<property name="hibernate.connection.username" value="root"/>
-			<property name="hibernate.connection.password" value="visual"/>
+			<property name="hibernate.connection.password" value="root"/>
 			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/elaine_kids"/>
 
 <!-- 			<property name="hibernate.connection.username" value="*******"/> -->

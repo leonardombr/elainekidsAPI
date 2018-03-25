@@ -14,6 +14,7 @@ import rest.exceptions.AppError;
 import rest.exceptions.AppException;
 
 public class CriancaService extends AppService {
+	
 	private static EntityTransaction tx = null;
 
 	@UseTransaction
@@ -72,6 +73,18 @@ public class CriancaService extends AppService {
 			throw e;
 		} catch (Exception e) {
 			throw new AppError("Ocorreu um erro ao pesquisar criança!", e);
+		}
+	}
+
+	public Long amountCrianca() {
+		try {
+			Query q = getEm().createQuery("select count(c) from Crianca c");
+			Long result = (Long) q.getSingleResult();
+			return result;
+		} catch (AppException e) {
+			throw e;
+		} catch (Exception e) {
+			throw new AppError("Erro ao pesquisar quantidade de crianças!");
 		}
 	}
 
