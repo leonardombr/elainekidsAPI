@@ -92,18 +92,12 @@ public class CriancaService extends AppService {
 		try {
 			Query q = getEm().createQuery("select c from Crianca c where c.nome = :nome", Crianca.class);
 			q.setParameter("nome", crianca.getNome());
-			Crianca criancaValidate = (Crianca) q.getSingleResult();
-			
-			if(criancaValidate.getNome().equals(crianca.getNome())){
-				
+			Crianca criancaValidate = (Crianca) q.getSingleResult();				
 				if(criancaValidate.getId() == crianca.getId()){
 					return true;
+				}else {
+					return false;
 				}
-				
-				return false;
-			}else{
-				return true;
-			}
 		}catch (AppException e){
 			throw e;
 		}catch (NoResultException e) {
