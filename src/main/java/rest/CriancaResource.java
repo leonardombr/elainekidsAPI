@@ -43,6 +43,7 @@ public class CriancaResource extends AppResource {
 					return super.handleError("Crianca já cadastrada!");
 				}
 			} catch (Exception e) {
+				System.out.println(e);
 				return super.handleError(e.getMessage());
 			}
 		} else {
@@ -53,6 +54,7 @@ public class CriancaResource extends AppResource {
 					return super.handleError("Crianca já cadastrada!");
 				}
 			} catch (Exception e) {
+				System.out.println(e);
 				return super.handleError(e.getMessage());
 			}
 		}
@@ -69,6 +71,7 @@ public class CriancaResource extends AppResource {
 			service.atualizar(crianca);
 			return super.handleResponse("Edição realizada com sucesso!!!");
 		}catch (Exception e) {
+			System.out.println(e);
 			return super.handleError(e.getMessage());
 		}
 		
@@ -83,6 +86,7 @@ public class CriancaResource extends AppResource {
 			service.excluir(service.getById(id));
 			return super.handleResponse("Criança excluida com sucesso!");
 		}catch (Exception e) {
+			System.out.println(e);;
 			return super.handleError(e.getMessage());
 		}
 		
@@ -95,6 +99,7 @@ public class CriancaResource extends AppResource {
 		try {
 			return super.handleResponse(service.getAll());
 		}catch (Exception e) {
+			System.out.println(e);
 			return super.handleError(e.getMessage());
 		}
 		
@@ -111,6 +116,7 @@ public class CriancaResource extends AppResource {
 			try {
 				return super.handleResponse(service.search(parametro));
 			}catch (Exception e) {
+				System.out.println(e);
 				return super.handleError(e.getMessage());
 			}
 		}		
@@ -123,6 +129,7 @@ public class CriancaResource extends AppResource {
 		try {
 			return super.handleResponse(service.getById(id));
 		}catch (Exception e) {
+			System.out.println(e);
 			return super.handleError(e.getMessage());
 		}
 		
