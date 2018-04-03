@@ -19,6 +19,10 @@
 <!-- 			<property name="hibernate.connection.username" value="*******"/> -->
 <!-- 			<property name="hibernate.connection.password" value="*******"/> -->
 <!-- 			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/estudant_ev3"/> -->
+			
+			<!--  atualiza o banco, gera as tabelas se for preciso -->
+    		<property name="hibernate.hbm2ddl.auto" value="update" />
+			
 
 			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
 			<property name="hibernate.show.sql" value="true" />
